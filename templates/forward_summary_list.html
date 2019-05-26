@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="ja">
+    <meta charset="UTF-8">
+    <style>
+        div.imgs {
+            margin: 0;
+            padding: 0;
+            padding-left: 1em;
+            font-size: 0;
+        }
+
+        div.imgs div.img_wrap {
+            display: inline-block;
+            width: 30vw;
+            max-width: 30vw;
+        }
+
+        div.img_wrap>div {
+            font-size: 9px;
+        }
+
+        div.img_wrap.contents {
+            vertical-align: top;
+        }
+
+        div.img_wrap.contents>div {
+            padding: 1em;
+        }
+
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div>USD_JPY_H4_2018-03-30.png</div>
+        <div class="imgs">
+            <div class="img_wrap">
+                <div><img src="/docs/datas/USD_JPY_H4_2018-03-30.png" /></div>
+            </div>
+        </div>
+    </div>
+    {% for inner in result_list %}
+    <div>
+        <div>{{inner.dir_name}}</div>
+        <div class="imgs">
+            <div class="img_wrap contents">
+                <div>
+                    {% for line in inner.lines %}
+                    {{line}}<br />
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="img_wrap">
+                <div>{{inner.file_name}}</div>
+                <div><img src="{{inner.path}}" /></div>
+            </div>
+            <div class="img_wrap">
+                <div>{{inner.train_index}}</div>
+                <div><img src="{{inner.rieki_path}}" /></div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+
+</html>

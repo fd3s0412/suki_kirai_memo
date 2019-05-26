@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="ja">
+<meta charset="UTF-8">
+<style>
+div.imgs {
+    margin: 0;
+    padding: 0;
+    padding-left: 1em;
+    font-size: 0;
+}
+div.imgs div.img_wrap {
+    display: inline-block;
+    width: 30vw;
+    max-width: 30vw;
+}
+div.img_wrap > div {
+    font-size: 9px;
+}
+img {
+    width: 100%;
+}
+</style>
+</head>
+<body>
+{% for dir_map in files %}
+<div>
+    <div>{{dir_map.dir_name}}</div>
+    <div class="imgs">
+        {% for file_map in dir_map.file_list %}
+        <div class="img_wrap">
+            <div>{{file_map.file_name}}</div>
+            <div><img src="{{file_map.path}}" /></div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+</body>
+</html>
